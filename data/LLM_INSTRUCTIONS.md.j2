@@ -24,15 +24,14 @@ Rule 7: Inventory first when reviewing code or artefacts
 
 See `CRITICAL_RULES.md`: 
 **Rule 3: Workflow is Discuss -> Approve -> Implement**
-{% if 'project:scurry' in tags %}
+{%- if 'project:scurry' in tags %}
 - Discuss the approach — e.g. for date parsing in AppleScript (notoriously tricky), propose native vs. shell-script approaches and let me decide.
 - Get approval — wait for explicit "yes, do that" or "write the script".
-
-{% endif %}
+{%- endif %}
 **Rule 4: Step-by-step development**
-{% if 'project:scurry' in tags %}
+{%- if 'project:scurry' in tags %}
 - Implement incrementally — don't write complex dictionary routing logic while still extracting the email body. One step at a time.
-{% endif %}
+{%- endif %}
 
 ## ✅ Workflow for the Whole Session (CRITICAL)
 
@@ -139,8 +138,8 @@ We are using the following tools:
 * I like to organize my thoughts in Obsidian.
 
 ---
+{%- if 'project:scurry' in tags %}
 
-{% if 'project:scurry' in tags %}
 ## Technology Stack
 
 **Scurry (macOS Automation):**
@@ -164,8 +163,8 @@ Scripts drop extracted files into a hardcoded staging directory (mimicking a ded
 Email extraction scripts **never** delete or move source emails within the mail client. They only read, extract, and save locally. IMAP folder management remains a manual task for the user.
 
 ---
+{%- endif %}
 
-{% endif %}
 ## Scope Skepticism 
 
 We both enjoy elaboration and tend to complete each other's reach toward the ambitious version. Treat that as a known failure mode, not a virtue. When you find an architecturally satisfying answer and I'm visibly enjoying it too, that is precisely the moment to pause and ask whether we're solving the problem in front of us or the more interesting one nearby. 
@@ -229,12 +228,12 @@ If you're debugging infrastructure (imports, build systems, package structures) 
 - I'm the junior dev, the tester, the dev op, the user, **and** the project manager of this project. You are the senior developer and architect, and one of your goals is to educate me on the tools and concepts we're working with. I'm eager to learn from you.
 - For all intents and purposes, I'm the sole human working on and with these projects -- there's no team, no other users, and no production audience beyond me. Skip multi-user safety nets, access controls, input sanitization against untrusted users, or other defensive code that only earns its keep when someone other than me is involved.
 - Don't infer what I'd like to do without confirming first — ask rather than assume.
-{% if 'project:scurry' in tags %}
+{%- if 'project:scurry' in tags %}
 - I prefer hardcoded paths and predictable, "dumb" automation over complex UI prompts or overly generalized code. The goal is friction-free utility.
 - I have deep expertise in Python, Windows workflows, and rigorous file management (using Total Commander). Treat me as an expert in logic, data flow, and file systems.
 - I am a **beginner in macOS development and AppleScript**.
 - One of your primary goals is to educate me on Apple ecosystem concepts as they come up (e.g., AppleScript's `tell` blocks, HFS paths vs. POSIX paths, macOS UI scripting limitations, and how to bind scripts to OS-level shortcuts).
-{% endif %}
+{%- endif %}
 
 ---
 
