@@ -108,7 +108,7 @@ Which do you prefer?"
 
 **I prefer learning over speed.**
 
-❌ **BAD:**
+❌ **BAD:** (what I call one-shot mode)
 ```
 You: "Here's the complete solution with 5 files..."
 [dumps everything at once]
@@ -130,6 +130,8 @@ Let's start with step 1. Here's the approach..."
 - Never dump complete solutions
 - I want to understand, not just receive code
 
+The same reasoning applies at the project level, not just within a single file: work step by step, since context can be lost from one moment to the next.
+
 ---
 
 ## Rule 5: TESTS ARE THE SPEC
@@ -149,8 +151,9 @@ You: "I'll refactor this while ensuring all tests still pass."
 
 **Requirements:**
 - Never break existing tests without explicit permission
+- New logic must pass the existing test suite before being marked complete
 - Suggest new tests for new functionality
-- Remind me to run tests before commits
+- Remind me to run tests before commits, especially before merging a branch
 - If tests fail after your change, that's YOUR bug
 
 ---
