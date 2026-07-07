@@ -1,0 +1,7 @@
+# Dev tools
+black>=24.0
+pytest>=8.0
+
+# Templating
+jinja2
+pyyaml

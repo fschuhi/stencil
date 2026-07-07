@@ -1,0 +1,35 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Makefile artifacts, raw photos, Excel tempfiles
+tmp/
+~$*
+bak/
+
+# We store the raw scanning protocols
+data/input/
+data/output/
+data/photos*/
+data/covers/
+data/import/
+
+# macOS
+.DS_Store
+
+# JetBrains
+.idea/
+
+# Environment / secrets
+.env
+*.toml
+!pyproject.toml
+
+# Excel workbench
+racks*.xlsm
+bridge*.xlsm

@@ -1,0 +1,40 @@
+# haddolib — .gitattributes
+#
+# This repo lives on macOS; the Windows VM reaches the SAME working tree through
+# the Y: share (one .git, one set of checked-out files). To stop Windows git from
+# writing CRLF into the shared files on checkout — which the Mac would then see as
+# spurious whole-file diffs — force LF in the working tree on BOTH sides.
+# Being committed and repo-level, this is authoritative and needs no per-machine
+# .gitconfig to coordinate.
+
+# --- Default: detect text vs. binary; for text, LF in the working tree everywhere
+*               text=auto eol=lf
+
+# --- Text files (documentary; the default above already enforces LF) ---
+*.py            text eol=lf
+*.sh            text eol=lf
+*.md            text eol=lf
+*.sql           text eol=lf
+*.toml          text eol=lf
+*.txt           text eol=lf
+*.lst           text eol=lf
+*.cfg           text eol=lf
+*.yml           text eol=lf
+*.yaml          text eol=lf
+Makefile        text eol=lf
+
+# --- Binary: never convert line endings, never attempt a line diff ---
+*.xlsm          binary
+*.xlsx          binary
+*.xls           binary
+*.frx           binary
+*.png           binary
+*.jpg           binary
+*.jpeg          binary
+*.db            binary
+*.sqlite        binary
+
+# --- Windows-only files that genuinely need CRLF (none committed today) ---
+# Add here if a committed Windows launcher ever needs CRLF, e.g.:
+# scripts/win/*.bat   text eol=crlf
+# scripts/win/*.ini   text eol=crlf
