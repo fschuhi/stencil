@@ -29,7 +29,10 @@ pyproject.toml
 # TBD
 
 ### --- Tests and fixtures data ---
-# TBD
+tests/fixtures/adjacent_independent_ifs.j2
+tests/fixtures/inline_conditional.j2
+tests/fixtures/leading_dash_trim.j2
+tests/test_render_whitespace.py
 
 ### --- DevOps tools ---
 # tools/concat_files.py

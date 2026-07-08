@@ -33,3 +33,27 @@ def test_inline_conditional_tag_absent():
     result = render_fixture("inline_conditional.j2", tags=[])
     expected = "Error handling: best-effort.\nNext line."
     assert result == expected
+
+
+def test_adjacent_independent_ifs_both_present():
+    result = render_fixture("adjacent_independent_ifs.j2", tags=["demo:alpha", "demo:beta"])
+    expected = "Intro line.\n- alpha bullet\n- beta bullet\n\n## Closing Heading"
+    assert result == expected
+
+
+def test_adjacent_independent_ifs_only_alpha():
+    result = render_fixture("adjacent_independent_ifs.j2", tags=["demo:alpha"])
+    expected = "Intro line.\n- alpha bullet\n\n## Closing Heading"
+    assert result == expected
+
+
+def test_adjacent_independent_ifs_only_beta():
+    result = render_fixture("adjacent_independent_ifs.j2", tags=["demo:beta"])
+    expected = "Intro line.\n- beta bullet\n\n## Closing Heading"
+    assert result == expected
+
+
+def test_adjacent_independent_ifs_neither():
+    result = render_fixture("adjacent_independent_ifs.j2", tags=[])
+    expected = "Intro line.\n\n## Closing Heading"
+    assert result == expected
