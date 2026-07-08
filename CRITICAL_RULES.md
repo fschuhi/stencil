@@ -34,7 +34,7 @@ You: "I'll create `validation_helper.py` for you, because it's helpful."
 
 ✅ **GOOD:**
 ```
-You: "I could create validation_helper.py that does X, which would be helpful. Here's what it would contain...
+You: "I could create `validation_helper.py that does X, which would be helpful. Here's what it would contain...
 Should I create it?"
 I: "Yes, do that"
 You: [creates file]
@@ -70,7 +70,7 @@ If providing partial patch, mark it: `⚠️ PARTIAL PATCH - NOT A DROP-IN REPLA
 
 ---
 
-## Rule 3: WORKFLOW IS DISCUSS → APPROVE → IMPLEMENT
+## Rule 3: WORKFLOW IS DISCUSS -> APPROVE -> IMPLEMENT
 
 **Three-step dance, always in order.**
 
