@@ -10,133 +10,34 @@ LLM_INSTRUCTIONS.md
 manifest.lst
 tmp/project_tree.txt
 
-# Frozen decision-records — kept in the repo, OUT of the dump. design.md carries
-# their distilled essence and points here; re-include only if a settled decision
-# is re-opened.
-# haddolib-design.md
-# PROTOTYPE_SCHEMA_DECISION.md
-# BRIDGE_CONTRACT.md
+# Handover document -- we are still in the phase of setting up the project
+HANDOVER.md
 
-# standard project documentation (probably slightly out of sync)
+# standard project documentation -- work in progress
 README.md
 GOALS.md
-TODO.md
-
-### ---Pictures and screenshots showing the library room ("Magazin") and rack/box organization ---
-# doc/Magazin.jpg
-# doc/book case (old apartment).jpg
-# doc/racks 3+4 (left) and 5+6 (right).jpg
-# doc/Magazin layout.jpg
-# doc/Kallax box numbers.jpg
-# doc/studio_control_sheet.png
-# doc/old ISBN - Jurassic Park (front).jpg
-# doc/old ISBN - Jurassic Park (ISBN).jpg
+# TODO.md
 
 ### --- Build & Python Configuration ---
 Makefile
 requirements.txt
-requirements-win.txt
-pyproject.toml
+# pyproject.toml
 # .gitignore
 # .gitattributes
 
-### --- Tools Configuration ---
-# ISBNdb API key
-# .env
+### --- Actual tools to manage templates go in `scripts/` ---
+# TBD
 
-### --- Cataloguing tools ---
-# tools/control-sheet.py
-
-### --- Workflow tools (CSV-producing scripts, macOS-side) ---
-# scripts/cover_download.py
-# scripts/isbndb_lookup.py
-# scripts/isbndb_query.py
-# scripts/isbndb_search.py
-# scripts/isbndb_utils.py
-# scripts/photo_analysis.py
-
-# Open Library lookup superseded by ISBNdb
-# scripts/isbn_lookup.py
-
-### --- Shared foundation ---
-src/haddolib/common.py        
-src/haddolib/database.py
-src/haddolib/catalog.py
-
-### --- roster import (Excel roster sheet -> SQLite) ---
-src/haddolib/roster.py        
-src/haddolib/roster_import.py
-
-### --- roster export ---
-src/haddolib/export_core.py
-
-### --- PyXLL bridge ---
-src/haddolib/bridge_core.py
-src/haddolib/pyxll_bridge.py
-src/haddolib/query_core.py
-src/haddolib/tag_core.py
-
-### --- VBA macros for the bridge ---
-# bas/clHaddoBookshelf.cls
-# bas/AuthorsShelf.bas
-# bas/Haddolib.bas
-# bas/RackBoxes.bas
-# bas/Tags.bas
-# bas/TitleShelf.bas
-
-### --- HIBERNATED: five-grain "dream" ingest (frozen, not developed during prototype) ---
-# src/haddolib/ingest_isbndb.py
-
-### --- SQL ---
-data/haddolib_prototype.sql   
-# data/haddolib_schema.sql
-
-### --- Tests ---
-## Boundary files: show how architecture works at places we might change
-## fixture definitions; import crossing contract
-tests/conftest.py
-tests/test_bridge_core.py
-tests/test_catalog.py
-
-## newest pure module
-tests/test_export_core.py
-
-## large, stable, low-entropy for orientation purposes
-# tests/test_common.py
-# tests/test_common_coercion.py
-# tests/test_common_xlsx.py
-# tests/test_database.py
-# tests/test_harness.py
-# tests/test_prototype_schema.py
-# tests/test_query_core.py
-# tests/test_roster.py
-# tests/test_roster_import.py
-# tests/test_tag_core.py
-
-## hibernated dream suite (kept green, on ice)
-# tests/test_ingest_isbndb.py
+### --- Tests and fixtures data ---
+# TBD
 
 ### --- DevOps tools ---
-# tools/backup_db.py
-# tools/bootstrap_db.py
 # tools/concat_files.py
-# tools/dump_db.py
 
-### --- Raw scan data, generated from Barcode scanner ---
-# data/raw/rack_01.txt
-# data/raw/rack_02.txt
-# data/raw/rack_03.txt
-# data/raw/rack_04.txt
+### --- Templates (reconsider location) ---
+data/LLM_INSTRUCTIONS.md.j2
 
-### --- Photos taken from books without barcode (examples)
-# data/photos/rack_01 2026-02-16 21.29.43.jpg
-# data/photos/rack_01 2026-02-16 21.35.20.jpg
-# data/photos/rack_01 2026-02-16 21.54.32.jpg
-# data/photos/rack_04 2026-02-18 20.49.55.jpg
-
-### --- Input (manually generated using racks.xlsm, not tracked in git) ---
-# data/input/ISBN_request_list.csv
-
-### --- Output (generated, not tracked in git) ---
-# data/output/isbn_results.csv
-# data/output/photo_results.csv
+### --- Output location for rendered templates (reconsider location, maybe put in GitHub) ---
+# tmp/scurry/LLM_INSTRUCTIONS.md
+# tmp/haddolib/LLM_INSTRUCTIONS.md
+# etc.
