@@ -9,7 +9,7 @@ RUN_WITH_PATH = $(ACTIVATE) && PYTHONPATH=.
 SETUP_STAMP = $(VENV_DIR)/.setup_stamp
 
 # --- Phony targets ---
-.PHONY: all setup test test-verbose clean showtree gentree filesdump help
+.PHONY: all setup test test-verbose render clean showtree gentree filesdump help
 
 # Default target runs 'setup'
 all: setup
@@ -33,6 +33,10 @@ test: $(SETUP_STAMP) ## Run all tests (quiet mode)
 
 test-verbose: $(SETUP_STAMP) ## Run tests with verbose output
 	$(RUN_WITH_PATH) pytest -v -s
+
+# --- Rendering Targets ---
+render: $(SETUP_STAMP) ## Render all projects' artefacts (or one: make render PROJECT=scurry)
+	$(RUN_WITH_PATH) python scripts/render.py $(if $(PROJECT),--project $(PROJECT),)
 
 # --- Utility Targets ---
 
