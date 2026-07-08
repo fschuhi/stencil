@@ -41,6 +41,7 @@ tests/test_render_whitespace.py
 
 ### --- Template config (reconsider location) ---
 data/projects.yaml
+data/CRITICAL_RULES.md.j2
 data/LLM_INSTRUCTIONS.md.j2
 
 ### --- Output location for rendered templates (reconsider location, maybe put in GitHub) ---
