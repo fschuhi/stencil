@@ -1,3 +1,19 @@
+stencil:
+  tags:
+    - project:stencil
+    - technology:python
+    - history:history
+    - status:private
+  path: .
+
+haddolib:
+  tags:
+    - project:haddolib
+    - technology:python
+    - history:history
+    - status:private
+  path: tmp/haddolib
+
 scurry:
   tags:
     - project:scurry
@@ -7,10 +23,3 @@ scurry:
     - status:private
   path: tmp/scurry
 
-haddolib:
-  tags:
-    - project:haddolib
-    - technology:python
-    - history:history
-    - status:private
-  path: tmp/haddolib

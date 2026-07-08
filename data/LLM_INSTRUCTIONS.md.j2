@@ -22,7 +22,8 @@ Rule 7: Inventory first when reviewing code or artefacts
 
 ## ✅ Workflow for each Step (CRITICAL)
 
-See `CRITICAL_RULES.md`: 
+See `CRITICAL_RULES.md`:
+
 **Rule 3: Workflow is Discuss -> Approve -> Implement**
 {%- if 'project:scurry' in tags %}
 - Discuss the approach — e.g. for date parsing in AppleScript (notoriously tricky), propose native vs. shell-script approaches and let me decide.
@@ -132,10 +133,10 @@ See `CRITICAL_RULES.md` Rule 2: Always generate drop-in replacements.
 ## Tools and Environment
 
 We are using the following tools:
-* I'm working on a MacBook Pro M4, 24GB RAM, with Windows 11 VM running under Parallels.
-* My main IDE is PyCharm Pro.
-* I use Total Commander for file management.  
-* I like to organize my thoughts in Obsidian.
+- I'm working on a MacBook Pro M4, 24GB RAM, with Windows 11 VM running under Parallels.
+- My main IDE is PyCharm Pro.
+- I use Total Commander for file management.
+- I like to organize my thoughts in Obsidian.
 
 ---
 {%- if 'project:scurry' in tags %}
@@ -154,7 +155,7 @@ We are using the following tools:
 ### Paths: HFS vs. POSIX
 This is a critical quirk of AppleScript:
 - **HFS Paths**: Colon-separated, starting with the drive name (e.g., `Macintosh HD:Users:fschuhi:Desktop:`). This is AppleScript's native format.
-  - **POSIX Paths**: Slash-separated Unix paths (e.g., `/Users/fschuhi/Desktop/`). Always be explicit in your code and explanations about which format is being used and when a conversion (`POSIX file`) is necessary.
+- **POSIX Paths**: Slash-separated Unix paths (e.g., `/Users/fschuhi/Desktop/`). Always be explicit in your code and explanations about which format is being used and when a conversion (`POSIX file`) is necessary.
 
 ### Staging over Sorting
 Scripts drop extracted files into a hardcoded staging directory (mimicking a dedicated `D:` drive approach). The scripts DO NOT contain complex routing logic to find final project folders. Final organization is a manual step done in Total Commander.
