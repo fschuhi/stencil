@@ -4,6 +4,7 @@ stencil:
     - technology:python
     - history:history
     - status:private
+    # stencil does not only manage the standard files but has them as rendered instance
   path: .
 
 haddolib:
