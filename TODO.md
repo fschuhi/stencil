@@ -12,3 +12,4 @@
 - [ ] Minor/optional: a couple of inherited (pre-existing, not template-related) trailing-whitespace lines from the original `haddolib`/`scurry` prose were noted but left untouched. Cosmetic; clean up opportunistically.
 - [ ] Two pending edits to `CRITICAL_RULES.md` (Rule 5 area): add "New logic must pass the existing test suite before being marked complete," and extend the test-reminder bullet with "...especially before merging a branch." Placement question: `CRITICAL_RULES.md` is shared across all projects, not a `stencil` artefact -- where should this action item actually live?
 - [ ] Minor/parked: whether the `## Technology Stack` sub-header line `**Scurry (macOS Automation):**` needs generalizing -- currently fine since it sits inside a blanket `project:scurry` wrap, but worth a second look if that wrap is ever split.
+- [ ] Why do I need to have 2 empty lines at the end of the template to generate 1 empty line in the rendered file?

@@ -1,2 +1,4 @@
 - template: data/LLM_INSTRUCTIONS.md.j2
   output: LLM_INSTRUCTIONS.md
+- template: data/CRITICAL_RULES.md.j2
+  output: CRITICAL_RULES.md
