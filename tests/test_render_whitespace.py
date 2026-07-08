@@ -57,3 +57,15 @@ def test_adjacent_independent_ifs_neither():
     result = render_fixture("adjacent_independent_ifs.j2", tags=[])
     expected = "Intro line.\n\n## Closing Heading"
     assert result == expected
+
+
+def test_trailing_dash_trim_tag_present():
+    result = render_fixture("trailing_dash_trim.j2", tags=["demo:on"])
+    expected = "Header line.\n- trailing bullet\nFooter line."
+    assert result == expected
+
+
+def test_trailing_dash_trim_tag_absent():
+    result = render_fixture("trailing_dash_trim.j2", tags=[])
+    expected = "Header line.\nFooter line."
+    assert result == expected
