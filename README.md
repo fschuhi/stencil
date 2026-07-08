@@ -48,7 +48,7 @@ graph LR
 ## Current status
 
 - **Data:** `data/projects.yaml` holds two projects so far (`scurry`, `haddolib`), each with its `tags:` and a `path:`. Both currently point at scratch `tmp/` locations rather than their real sibling-repo paths -- switching to real paths is an open TODO, not a blocker.
-- **Templates:** `data/templates.yaml` currently lists one artefact type, `data/LLM_INSTRUCTIONS.md.j2` → `LLM_INSTRUCTIONS.md`. More entries are expected; the schema doesn't need to change to add them.
+- **Templates:** `data/templates.yaml` currently lists two artefact type, `data/LLM_INSTRUCTIONS.md.j2` → `LLM_INSTRUCTIONS.md` and `data/CRITICAL_RULES.md.j2` → `CRITICAL_RULES.md`. More entries are expected; the schema doesn't need to change to add them.
 - **Rendering:** `scripts/render.py` is built, wired into `make render` (optionally `make render PROJECT=name`), and verified end-to-end against the real template and real tag data.
 - **Tests:** 10 tests green, covering four whitespace-handling shapes against small invented fixtures (see below). A golden-file test -- rendering the actual `LLM_INSTRUCTIONS.md.j2` against `project:scurry` + `technology:applescript`, checked in by hand -- is planned but not yet built.
 

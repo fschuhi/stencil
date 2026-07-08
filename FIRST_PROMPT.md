@@ -2,7 +2,7 @@
 
 (Note: "I" in the following paragraphs refer to the user, "you" to you as the AI model.)
 
-I'm attaching two files:
+Notice these two attached files:
 
 1. **`CRITICAL_RULES.md`** -- Non-negotiable collaboration rules (read this first!)
 2. **`filesdump.txt`** -- Relevant project context with code and documentation
