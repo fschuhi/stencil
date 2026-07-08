@@ -38,7 +38,8 @@ tests/test_render_whitespace.py
 ### --- DevOps tools ---
 # tools/concat_files.py
 
-### --- Templates (reconsider location) ---
+### --- Template config (reconsider location) ---
+data/projects.yaml
 data/LLM_INSTRUCTIONS.md.j2
 
 ### --- Output location for rendered templates (reconsider location, maybe put in GitHub) ---

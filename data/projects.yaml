@@ -1,0 +1,16 @@
+scurry:
+  tags:
+    - project:scurry
+    - technology:applescript
+    - history:history
+    # - alternative: history:changelog
+    - status:private
+  path: tmp/scurry
+
+haddolib:
+  tags:
+    - project:haddolib
+    - technology:python
+    - history:history
+    - status:private
+  path: tmp/haddolib
