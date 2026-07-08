@@ -26,7 +26,7 @@ pyproject.toml
 # .gitattributes
 
 ### --- Actual tools to manage templates go in `scripts/` ---
-# TBD
+scripts/render.py
 
 ### --- Tests and fixtures data ---
 tests/fixtures/adjacent_independent_ifs.j2
