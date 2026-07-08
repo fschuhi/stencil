@@ -10,13 +10,14 @@ LLM_INSTRUCTIONS.md
 manifest.lst
 tmp/project_tree.txt
 
-# Handover document -- we are still in the phase of setting up the project
-HANDOVER.md
-
 # standard project documentation -- work in progress
 README.md
 GOALS.md
-# TODO.md
+TODO.md
+# HISTORY.md
+
+# first Handover document, retained in the project, but no need to include in the `filesdump.txt`
+# HANDOVER.md
 
 ### --- Build & Python Configuration ---
 Makefile
