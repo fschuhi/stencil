@@ -21,7 +21,7 @@ GOALS.md
 ### --- Build & Python Configuration ---
 Makefile
 requirements.txt
-# pyproject.toml
+pyproject.toml
 # .gitignore
 # .gitattributes
 
