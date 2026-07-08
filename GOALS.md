@@ -11,7 +11,6 @@
 **What's next:**
 1. Golden-file test: render the real template against `project:scurry` + `technology:applescript`, hand-check the expected output. See `TODO.md`.
 2. Decide real `path:` values for `scurry`/`haddolib` in `projects.yaml` — currently `tmp/` placeholders; sibling-directory layout confirmed, but the switch hasn't been made.
-3. `README.md` — [to be resolved this session, pending the 3 style examples]
 
 ---
 
