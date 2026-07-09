@@ -127,6 +127,24 @@ See `CRITICAL_RULES.md` Rule 2: Always generate drop-in replacements.
 - **Variables:** Use clear, descriptive variable names.
 - **Comments:** Explain the "why", not just the "what".{% if 'technology:applescript' in tags %} AppleScript reads like English, so comments should explain *intent* or document quirks (like path conversions or text delimiters).{% endif %}
 - **Error Handling:** Fail gracefully.{% if 'project:scurry' in tags %} If an email has no subject, default to "Unknown", don't crash the script.{% endif %}
+{%- if 'project:anima' in tags %}
+
+### Swift
+
+1. **Naming:** types `PascalCase`, functions/variables `camelCase`, constants `camelCase`
+2. **Optionals:** prefer `guard let` for early returns, `if let` for conditional blocks
+3. **NSView.print() gotcha:** inside PDFView subclasses, use `Swift.print()` for console output
+4. **Framework imports:** `import Cocoa` for AppKit, `import Quartz` for PDFKit
+5. **Comments:** explain "why", not "what"
+
+### Python (anima_helper.py)
+
+1. **Style:** standard Python conventions (PEP 8)
+2. **CLI pattern:** argparse with subcommands (`add-highlight`, `edit-comment`, `delete-highlight`)
+3. **Exit codes:** 0 = success, non-zero = failure
+4. **Output:** UUID on stdout (success), error messages on stderr (failure)
+5. **Coordinates:** always fitz-native (top-left origin, y-down)
+{%- endif %}
 
 ---
 
@@ -143,7 +161,7 @@ We are using the following tools:
 
 ## Technology Stack
 
-**Scurry (macOS Automation):**
+**macOS Automation:**
 - **AppleScript / JXA** -- For interacting with macOS app GUIs (specifically Apple Mail to start).
 - **macOS Shortcuts / Automator / FastScripts** -- For wiring scripts to keyboard shortcuts.
 - **Staging Workflow** -- Scripts save to a hardcoded local path. Final file routing is handled manually by me using Total Commander via Windows Parallels. 
@@ -165,8 +183,64 @@ Email extraction scripts **never** delete or move source emails within the mail 
 
 ---
 {%- endif %}
+{%- if 'project:anima' in tags %}
 
-## Scope Skepticism 
+## Technology Stack
+
+**Swift / macOS (UI layer):**
+
+- **Swift** -- compiled with Xcode (or `swiftc` for quick iteration)
+- **PDFKit** (via `import Quartz`) -- PDF rendering, scrolling, text selection, zoom
+- **AppKit** (via `import Cocoa`) -- windows, menus, dialogs, event handling
+- **Xcode** -- IDE, .app bundle creation, test runner
+
+**Python (annotation backend):**
+
+- **PyMuPDF (fitz)** -- annotation writing, incremental save, annotation reading
+- **anima_helper.py** -- CLI tool called via subprocess from Swift
+- **PyCharm** -- IDE for Python work
+- **venv** -- at project root (`.venv/`)
+
+**Integration pattern:**
+
+- Swift handles all UI and user interaction
+- Python handles all PDF writing (annotations) via CLI subprocess
+- Communication: command-line arguments + exit codes + stdout/stderr
+- Coordinate conversion happens in Swift before calling the helper
+
+---
+
+## Key Technical Concepts
+
+### Coordinate Systems
+
+This is the most critical cross-language contract:
+
+- **PDFKit**: origin at **bottom-left**, y increases upward
+- **fitz**: origin at **top-left**, y increases downward
+- **Conversion**: `y_fitz = page_height - y_pdfkit`
+- The flip happens in Swift (`AnimaPDFView`) before calling `anima_helper.py`
+- The helper receives fitz-native coordinates only -- it doesn't know about PDFKit
+
+### Hybrid Architecture: PDFKit + fitz
+
+PDFKit is read-only in this project. All annotation writing goes through fitz because PDFKit's `writeToURL` is destructive (loses opacity, IDs, dates, shifts coordinates, doubles file size). fitz's `save(incremental=True)` preserves everything.
+
+### Dual-Write Pattern
+
+When creating/editing/deleting highlights during a session:
+1. Call `anima_helper.py` to persist the change to the PDF file (via fitz)
+2. Update the in-memory PDFKit document (add/modify/remove `PDFAnnotation`)
+3. Never reload the document during a session -- eliminates scroll drift
+
+### UUID Contract
+
+Every annotation gets a UUID stored in the PDF `/NM` field. Swift generates UUIDs, passes them to the helper, and uses them for hit-testing and identification.
+
+---
+{%- endif %}
+
+## Scope Skepticism
 
 We both enjoy elaboration and tend to complete each other's reach toward the ambitious version. Treat that as a known failure mode, not a virtue. When you find an architecturally satisfying answer and I'm visibly enjoying it too, that is precisely the moment to pause and ask whether we're solving the problem in front of us or the more interesting one nearby. 
 
@@ -235,6 +309,10 @@ If you're debugging infrastructure (imports, build systems, package structures) 
 - I am a **beginner in macOS development and AppleScript**.
 - One of your primary goals is to educate me on Apple ecosystem concepts as they come up (e.g., AppleScript's `tell` blocks, HFS paths vs. POSIX paths, macOS UI scripting limitations, and how to bind scripts to OS-level shortcuts).
 {%- endif %}
+{%- if 'project:anima' in tags %}
+- I have deep expertise in Python and in the PDF annotation domain (fitz/PyMuPDF, PDF internals, annotation structures, coordinate systems). Treat me as expert there.
+- One of your goals is to educate me on Swift, Xcode, Apple frameworks, and macOS development patterns. I'm learning Swift from scratch -- explain Apple ecosystem concepts as they come up.
+{%- endif %}
 
 ---
 
@@ -277,6 +355,9 @@ Why this fits me: I'm a capable generalist but a relative newbie in most of the 
 - ✅ macOS/AppleScript concepts are explained at the right level
 - ✅ Code is simple, predictable, and heavily hardcoded where appropriate
 {%- endif %}
+{%- if 'technology:swift' in tags %}
+- ✅ macOS/Swift concepts are explained at the right level
+{%- endif %}
 - ✅ Bite-sized, digestible steps
 - ✅ Changes are incremental and testable
 - ✅ Tests stay green throughout
@@ -297,6 +378,9 @@ Why this fits me: I'm a capable generalist but a relative newbie in most of the 
 - ❌ Complexity added "because best practice"
 {%- if 'technology:applescript' in tags %}
 - ❌ Assume I know how to run an AppleScript outside of the Script Editor -- explain macOS integrations
+{%- endif %}
+{%- if 'technology:swift' in tags %}
+- ❌ Assume I know how to use Xcode
 {%- endif %}
 {%- if 'project:scurry' in tags %}
 - ❌ Build dynamic "Choose Folder" prompts unless explicitly asked (I prefer hardcoded staging paths)

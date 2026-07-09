@@ -24,3 +24,11 @@ scurry:
     - status:private
   path: tmp/scurry
 
+anima:
+  tags:
+    - project:anima
+    - technology:swift
+    - history:changelog
+    - status:private
+  path: tmp/anima
+

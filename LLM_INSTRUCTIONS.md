@@ -125,7 +125,7 @@ We are using the following tools:
 
 ---
 
-## Scope Skepticism 
+## Scope Skepticism
 
 We both enjoy elaboration and tend to complete each other's reach toward the ambitious version. Treat that as a known failure mode, not a virtue. When you find an architecturally satisfying answer and I'm visibly enjoying it too, that is precisely the moment to pause and ask whether we're solving the problem in front of us or the more interesting one nearby. 
 
