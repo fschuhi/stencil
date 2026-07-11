@@ -89,6 +89,22 @@ See `CRITICAL_RULES.md` Rule 2: Always generate drop-in replacements.
 <file content here, which may itself freely contain standard triple-backtick fences>
 ````
 
+### Line Breaks in Prose Documents
+
+- In Markdown artefacts (`TODO.md`, `GOALS.md`, `README.md`, etc.), never hard-wrap prose. One paragraph or one list item = one physical line; my editor soft-wraps.
+- Rationale: hard-wrapped text breaks when I edit it -- every insertion or deletion forces manual re-flowing of the following lines.
+- Hard line breaks only where Markdown needs them: between blocks, around headings, in code fences and tables.
+- This rule is for prose only. Code follows the formatter (black, SwiftFormat), including its line-length limits.
+
+### Filenames: Use Backtick Code Formatting
+
+- In prose you generate: wrap filenames in backticks (inline code formatting), e.g. `README.md` instead of README.md, and `config.yaml` instead of config.yaml.
+
+### Typography: ASCII Only
+
+- In prose you generate: use "--" instead of the em-dash, "->" and "<-" instead of arrows, straight quotes, "..." instead of the ellipsis character.
+- Exceptions: verbatim quotes from existing files keep their original characters; code output reproduces whatever the code contains.
+
 ---
 
 ## Tooling & Dependency Conventions
