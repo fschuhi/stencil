@@ -32,3 +32,10 @@ anima:
     - status:private
   path: tmp/anima
 
+unitum:
+  tags:
+    - project:unitum
+    - technology:python
+    - history:history
+    - status:private
+  path: tmp/unitum
