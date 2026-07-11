@@ -28,7 +28,7 @@ anima:
   tags:
     - project:anima
     - technology:swift
-    - history:changelog
+    - history:history
     - status:private
   path: tmp/anima
 
