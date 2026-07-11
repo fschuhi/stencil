@@ -1,6 +1,10 @@
 # TODO
 
-*(Scratchpad for ideas, open decisions, quick wins -- resolved items move to `HISTORY.md`.)*
+(Note: "I" in the following paragraphs refer to the user, "you" to you as the AI model.)
+
+**Charter:** Forward-looking only -- concrete, startable work: tasks specified well enough that next-session-me can begin within ten minutes, plus investigation items, test specs, and scratchpad ideas awaiting promotion or deletion. Items are unordered within their theme sections; open questions are marked _Needs investigation_ in the bullet. Completed items are struck through (~~like this~~) until they move to `HISTORY.md` (on the heap, out of the per-session dump) at session end. Strategic direction, ordering, and milestones live in `GOALS.md` -- anything that needs a strategy discussion before it is actionable goes there. Architecture, contract, and settled decisions live in `README.md`.
+
+---
 
 - [ ] Golden-file test: render `data/LLM_INSTRUCTIONS.md.j2` for real, against `project:scurry` + `technology:applescript`; check in the expected output by hand. Update only via deliberate re-approval when the template changes on purpose -- never auto-regenerate.
 - [ ] Canonical bullet character in this project's docs/templates: use `-`, not `*`.

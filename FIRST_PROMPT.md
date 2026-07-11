@@ -66,7 +66,7 @@ Let's allow ourselves to be upbeat and motivated. We are working on something th
 
 **Step 2:** Review the `filesdump.txt`
 
-**Step 3:** Acknowledge that you understand:  
+**Step 3:** Acknowledge that you understand:
 
 - The `CRITICAL_RULES.md`
 - The project's structure
@@ -74,7 +74,7 @@ Let's allow ourselves to be upbeat and motivated. We are working on something th
 - The collaboration rules
 - The values that are important to me
 
-**Step 4:** State the next action from the _Current Session Pointer_ (`GOALS.md`) and propose two approaches. Remember: 
+**Step 4:** State the next action from the _Current Session Pointer_ (`GOALS.md`) and propose two approaches. Remember:
 
 - Discuss approach options first
 - Break work into digestible steps

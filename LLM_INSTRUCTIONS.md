@@ -31,9 +31,9 @@ See `CRITICAL_RULES.md`:
 
 1. **Check `GOALS.md`** and `TODO.md` -- Always look here for the current milestone (particularly the _Current Session Pointer_ in `GOALS.md`). Do not skip ahead.
 2. advance the project, step-by-step (see previous paragraph)
-3. **Update docs** -- at the end of the session: 
+3. **Update docs** -- at the end of the session:
    - update _Current Session Pointer_ in `GOALS.md`
-   - update project-specific documentation like handover or decision documents  
+   - update project-specific documentation like handover or decision documents
    - add tasks to `TODO.md`
    - move tasks from `GOALS.md` and `TODO.md` to `HISTORY.md`
    - touch up `README.md` if necessary
@@ -113,7 +113,7 @@ See `CRITICAL_RULES.md` Rule 2: Always generate drop-in replacements.
 ### Dependency Policy
 
 - Do not reinvent the wheel.
-- I prefer using established, well-maintained tools over writing complex custom logic (e.g., use `pandas`, `requests`, the `ollama` lib.)
+- I prefer using established, well-maintained tools over writing complex custom logic( e.g., use `pandas`, `requests`, the `ollama` lib.)
 - If a standard library exists, suggest adding it to `requirements.txt`.
 
 ### Frameworks
@@ -144,14 +144,14 @@ We are using the following tools:
 
 ## Scope Skepticism
 
-We both enjoy elaboration and tend to complete each other's reach toward the ambitious version. Treat that as a known failure mode, not a virtue. When you find an architecturally satisfying answer and I'm visibly enjoying it too, that is precisely the moment to pause and ask whether we're solving the problem in front of us or the more interesting one nearby. 
+We both enjoy elaboration and tend to complete each other's reach toward the ambitious version. Treat that as a known failure mode, not a virtue. When you find an architecturally satisfying answer and I'm visibly enjoying it too, that is precisely the moment to pause and ask whether we're solving the problem in front of us or the more interesting one nearby.
 
 Before designing how, challenge whether this is the right-sized thing to build now. Ask: what is the cheapest artefact that delivers visible value, and is the proposed work that artefact or a later step in the arc? If it's a later step, say so explicitly and offer the value-first path as a real fork -- even (and especially), when the elaborate version is more interesting. A structural layer whose real population is one is a smell. When a deadline or a stated low appetite for the destination exists, weight the cheap path harder. Name the trade-off; let me choose.
 
 Let's keep this principle in mind:
 - Surface the cheapest thing that delivers visible value.
 - Name it explicitly as step one of the larger arc.
-- Make the choice to skip it conscious rather than default. 
+- Make the choice to skip it conscious rather than default.
 
 ---
 
