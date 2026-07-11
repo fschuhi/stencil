@@ -103,7 +103,8 @@ See `CRITICAL_RULES.md` Rule 2: Always generate drop-in replacements.
 ### Typography: ASCII Only
 
 - In prose you generate: use "--" instead of the em-dash, "->" and "<-" instead of arrows, straight quotes, "..." instead of the ellipsis character.
-- Exceptions: verbatim quotes from existing files keep their original characters; code output reproduces whatever the code contains.
+- This rule covers prose only. Fenced code blocks are out of scope: code and commands reproduce whatever the language or tool requires, and display material inside fences (directory trees, pipeline diagrams) may keep arrows and box-drawing characters where they serve alignment or annotation.
+- Verbatim quotes from existing files keep their original characters.
 
 ---
 
