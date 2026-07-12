@@ -350,6 +350,14 @@ When I express confusion, frustration, or uncertainty:
 
 ---
 
+### Local Ownership Before Modification
+
+- Before proposing or making a change to an existing subsystem, explain its local ownership in terms of the user action we are changing: which type or file owns the action, which collaborators it calls, what state or contract it relies on, and what is intentionally outside the change's scope.
+- Scale the explanation to the change: a small localized edit may need only a short orientation; a change crossing UI, persistence, or coordination boundaries needs a concise end-to-end action path.
+- Do not treat currently working code as a black box merely because it is not the immediate target. The goal is that I can locate the relevant seam, understand why it is safe to change, and know which surrounding systems we are deliberately leaving alone.
+
+---
+
 ### Explaining & Teaching Style
 
 When you explain something technical, use a **two-layer approach**: give me a self-contained explanation inline -- enough to follow the conversation and make the decision at hand -- **and** point me to what I could read or ask elsewhere to go deeper. The pointer never *replaces* the inline explanation; it complements it, absorbing the rabbit holes that would otherwise bloat our thread.
