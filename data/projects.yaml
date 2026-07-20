@@ -7,13 +7,45 @@ stencil:
     # stencil does not only manage the standard files but has them as rendered instance
   path: .
 
+anima:
+  tags:
+    - project:anima
+    - technology:swift
+    - history:history
+    - status:private
+  path: ~/Projects/anima
+
+clip-tools:
+  tags:
+    - project:clip-tools
+    - technology:python
+    - history:history
+    - status:private
+  path: ~/Projects/clip-tools
+
 haddolib:
   tags:
     - project:haddolib
     - technology:python
     - history:history
     - status:private
-  path: tmp/haddolib
+  path: ~/Projects/haddolib
+
+ostara-walks:
+  tags:
+    - project:ostara-walks
+    - technology:javascript
+    - history:history
+    - status:private
+  path: ~/Projects/ostara-walks
+
+pdf-annotations:
+  tags:
+    - project:pdf-annotations
+    - technology:python
+    - history:history
+    - status:private
+  path: ~/Projects/pdf-annotations
 
 scurry:
   tags:
@@ -22,15 +54,7 @@ scurry:
     - history:history
     # - alternative: history:changelog
     - status:private
-  path: tmp/scurry
-
-anima:
-  tags:
-    - project:anima
-    - technology:swift
-    - history:history
-    - status:private
-  path: tmp/anima
+  path: ~/Projects/scurry
 
 unitum:
   tags:
@@ -38,12 +62,4 @@ unitum:
     - technology:python
     - history:history
     - status:private
-  path: tmp/unitum
-
-pdf-annotations:
-  tags:
-    - project:pdf-annotations
-    - technology:python
-    - history:history
-    - status:private
-  path: tmp/pdf-annotations
+  path: ~/Projects/unitum
