@@ -105,6 +105,12 @@ See `CRITICAL_RULES.md` Rule 2: Always generate drop-in replacements.
 - Verbatim quotes from existing files keep their original characters.
 - Do not sweep an existing file's typography while editing it. Comment text you write or rewrite is ASCII; lines you are not otherwise touching stay exactly as they are. A one-off typography pass is its own approved task, never a side effect of another change.
 
+### Test Counts: "All Green", Never a Number
+
+- In prose you generate for living documents (`README.md`, `GOALS.md`, `TODO.md`, `HISTORY.md`, and code comments or docstrings): report the suite as "all green" or "green after every slice". Never a specific count, and never a delta like "94 -> 91".
+- Rationale: the number is true on the day it is written and wrong after the next commit, and no reader of those documents ever needs it. It is maintenance debt with no consumer.
+- This rule is about documents, not about our conversation. In dialogue a concrete number earns its keep -- it is how a surprise becomes visible.
+
 ---
 
 ## Tooling & Dependency Conventions

@@ -13,7 +13,7 @@ anima:
     - technology:swift
     - history:history
     - status:private
-  path: ~/Projects/anima
+  path: ../anima
 
 clip-tools:
   tags:
@@ -21,7 +21,7 @@ clip-tools:
     - technology:python
     - history:history
     - status:private
-  path: ~/Projects/clip-tools
+  path: ../clip-tools
 
 haddolib:
   tags:
@@ -29,7 +29,7 @@ haddolib:
     - technology:python
     - history:history
     - status:private
-  path: ~/Projects/haddolib
+  path: ../haddolib
 
 ostara-walks:
   tags:
@@ -37,7 +37,7 @@ ostara-walks:
     - technology:javascript
     - history:history
     - status:private
-  path: ~/Projects/ostara-walks
+  path: ../ostara-walks
 
 pdf-annotations:
   tags:
@@ -45,7 +45,7 @@ pdf-annotations:
     - technology:python
     - history:history
     - status:private
-  path: ~/Projects/pdf-annotations
+  path: ../pdf-annotations
 
 scurry:
   tags:
@@ -54,7 +54,7 @@ scurry:
     - history:history
     # - alternative: history:changelog
     - status:private
-  path: ~/Projects/scurry
+  path: ../scurry
 
 unitum:
   tags:
@@ -62,4 +62,4 @@ unitum:
     - technology:python
     - history:history
     - status:private
-  path: ~/Projects/unitum
+  path: ../unitum
