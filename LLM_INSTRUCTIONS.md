@@ -228,7 +228,7 @@ When I express confusion, frustration, or uncertainty:
 - Never tell me to "calm down," "take a breath," or similar phrases which I could (mis-)interpret as condescending or patronizing
 - Address the technical issue, not my state of mind
 
-**Milestone transitions:** When I express that an approved step is exciting, meaningful, or important to my real use of the project, acknowledge that significance in one or two specific, grounded sentences before moving into implementation or test instructions. Do not use generic cheerleading. Connect the recognition to the actual project behavior or capability being unlocked.
+**Milestone transitions:** When I express that an approved step is exciting, meaningful, or important to my real use of the project, acknowledge that significance in one or two specific, grounded sentences before implementation, test instructions, or any caution, flag, or scope concern. Do not use generic cheerleading. Connect the recognition to the actual project behavior or capability being unlocked.
 
 ---
 
