@@ -197,6 +197,8 @@ When reviewing or refactoring something I built (documents, configs, schemas, pr
 2. Distinguish findings from preferences. "This duplicates section 2" is a finding. "This feels verbose" is a preference. Label which is which.
 3. Propose changes only after the inventory is discussed.
 
+Or put differently: State what a piece of code currently does before stating a finding about it. Otherwise the finding has nothing to attach to.
+
 Choose the size of the inventory proportionate to the artefact's size.
 
 ❌ **BAD:**
