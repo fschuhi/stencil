@@ -14,8 +14,8 @@
 
 ## Prioritized TODOs
 
-- **Preamble management:** Artefacts can have charters or other preamble sections, see `TODO.md`, `GOALS.md`, `HISTORY.md`. These sections can be replicated across all projects. Trivially, the particular artefacts must not be replaced like it's done with e.g. `LLM_INSTRUCTIONS.md`, but just the designated preamble sections. Further questions to answer: Is the title part of the preamble? Does the preamble end with a `---`, i.e. is that also part of the preamble or added by the preamble manager?
-- **Canonical titles:** `GOALS.md` has the title "Project Goals & Roadmap" (notice the "&", should probably be "and"), whereas `TODO.md` just states "TODO" and `HISTORY.md` says "History". Settle on a canonical title style. 
+- ~~**Preamble management:** Artefacts can have charters or other preamble sections, see `TODO.md`, `GOALS.md`, `HISTORY.md`. These sections can be replicated across all projects. Trivially, the particular artefacts must not be replaced like it's done with e.g. `LLM_INSTRUCTIONS.md`, but just the designated preamble sections. Further questions to answer: Is the title part of the preamble? Does the preamble end with a `---`, i.e. is that also part of the preamble or added by the preamble manager?~~ Resolved 2026-08-03: splice on the first standalone `---` line (`split_at_boundary()`), `mode: splice` in `templates.yaml`. Title is part of the templated preamble; the `---` is owned by the splice logic, not the template. See `HISTORY.md`.
+- ~~**Canonical titles:** `GOALS.md` has the title "Project Goals & Roadmap" (notice the "&", should probably be "and"), whereas `TODO.md` just states "TODO" and `HISTORY.md` says "History". Settle on a canonical title style.~~ Resolved 2026-08-03: `# {{ name }} -- <Kind>`, e.g. `# stencil -- TODO`. See `HISTORY.md`.
 
 ## Backlog TODOs
 

@@ -8,7 +8,7 @@
 
 ## 📍 Current Session Pointer
 
-**Where we are:** Core rendering pipeline built and verified end-to-end against the real template. `data/projects.yaml` (`scurry`, `haddolib`) and `data/templates.yaml` populated; `scripts/render.py` (pure `render_project` + two-phase fail-loud `main()`, optional `--project` filter) wired into `make render`. Whitespace-quirk test suite green (10 tests, 4 fixture shapes: leading-dash trim, inline conditional, adjacent independent blocks, trailing-dash trim). `pyproject.toml` naming corrected.
+**Where we are:** Core rendering pipeline built and verified end-to-end against the real template. `data/projects.yaml` (`scurry`, `haddolib`) and `data/templates.yaml` populated; `scripts/render.py` (pure `render_project` + two-phase fail-loud `main()`, optional `--project` filter) wired into `make render`. Whitespace-quirk test suite green (10 tests, 4 fixture shapes: leading-dash trim, inline conditional, adjacent independent blocks, trailing-dash trim). `pyproject.toml` naming corrected. **2026-08-03 (out-of-band):** `TODO.md`/`GOALS.md`/`HISTORY.md` charters are now templated and spliced fleet-wide too -- see `HISTORY.md`. The two items below are unaffected and still next.
 
 **What's next:**
 1. Golden-file test: render the real template against `project:scurry` + `technology:applescript`, hand-check the expected output. See `TODO.md`.
