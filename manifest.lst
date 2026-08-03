@@ -40,22 +40,30 @@ scripts/render.py
 tests/fixtures/adjacent_independent_ifs.j2
 tests/fixtures/inline_conditional.j2
 tests/fixtures/leading_dash_trim.j2
+tests/fixtures/split_boundary_clean.txt
+tests/fixtures/split_boundary_missing.txt
+tests/fixtures/split_boundary_table_no_false_match.txt
+tests/fixtures/split_boundary_two_markers.txt
 tests/fixtures/trailing_dash_trim.j2
+
 tests/test_render_whitespace.py
+tests/test_split_at_boundary.py
 
 ### --- DevOps tools ---
 # tools/concat_files.py
 
-### --- Template config (reconsider location) ---
+### --- Template config ---
 data/projects.yaml
 data/templates.yaml
+
+### --- Templates (`mode: overwrite`) ---
 data/CRITICAL_RULES.md.j2
 data/LLM_INSTRUCTIONS.md.j2
 
 # not included, because it contains boundary markers which would mess up the `filesdump.txt`
 # data/FIRST_PROMPT.md.j2
 
-### --- Output location for rendered templates (reconsider location, maybe put in GitHub) ---
-# tmp/scurry/LLM_INSTRUCTIONS.md
-# tmp/haddolib/LLM_INSTRUCTIONS.md
-# etc.
+### --- Templates (`mode: splice`) ---
+data/GOALS.md.j2
+data/HISTORY.md.j2
+data/TODO.md.j2

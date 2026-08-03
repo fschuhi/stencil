@@ -1,6 +1,18 @@
 - template: data/FIRST_PROMPT.md.j2
   output: FIRST_PROMPT.md
+  mode: overwrite
 - template: data/CRITICAL_RULES.md.j2
   output: CRITICAL_RULES.md
+  mode: overwrite
 - template: data/LLM_INSTRUCTIONS.md.j2
   output: LLM_INSTRUCTIONS.md
+  mode: overwrite
+- template: data/TODO.md.j2
+  output: TODO.md
+  mode: splice
+- template: data/GOALS.md.j2
+  output: GOALS.md
+  mode: splice
+- template: data/HISTORY.md.j2
+  output: HISTORY.md
+  mode: splice

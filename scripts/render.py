@@ -20,10 +20,28 @@ PROJECTS_YAML = Path("data/projects.yaml")
 TEMPLATES_YAML = Path("data/templates.yaml")
 
 
-def render_project(tags: list[str], template_str: str) -> str:
-    """Pure rendering step: tags in, rendered text out. No file I/O here."""
+def render_project(name: str, tags: list[str], template_str: str) -> str:
+    """Pure rendering step: name and tags in, rendered text out. No file I/O here."""
     template = jinja2.Environment().from_string(template_str)
-    return template.render(tags=tags)
+    return template.render(name=name, tags=tags)
+
+
+def split_at_boundary(text: str, boundary: str = "---") -> str:
+    """Return everything after the first standalone boundary line.
+
+    A standalone boundary line is a line whose stripped content equals
+    `boundary` exactly -- a line merely containing it (e.g. a Markdown
+    table separator like "| --- | --- |") does not match. The boundary
+    line itself is discarded; the returned body is otherwise byte-for-byte
+    what followed it, with no stripping or re-indenting.
+
+    Raises ValueError if no standalone boundary line is found.
+    """
+    lines = text.splitlines(keepends=True)
+    for i, line in enumerate(lines):
+        if line.strip() == boundary:
+            return "".join(lines[i + 1:])
+    raise ValueError(f"No standalone {boundary!r} line found")
 
 
 def load_projects(path: Path) -> dict:
@@ -58,6 +76,29 @@ def find_missing_paths(selected: dict) -> list[str]:
     return errors
 
 
+def find_bad_splice_targets(selected: dict, templates: list) -> list[str]:
+    """Return an error message per project/splice-template whose output file is
+    missing, or exists but has no standalone boundary line to splice against.
+    Only checks projects whose path already passed find_missing_paths."""
+    errors = []
+    for name, entry in selected.items():
+        out_dir = Path(entry["path"])
+        if not out_dir.is_dir():
+            continue  # already reported by find_missing_paths
+        for tmpl_entry in templates:
+            if tmpl_entry.get("mode", "overwrite") != "splice":
+                continue
+            output_path = out_dir / tmpl_entry["output"]
+            if not output_path.is_file():
+                errors.append(f"  {name}: '{output_path}' does not exist (splice target must pre-exist)")
+                continue
+            try:
+                split_at_boundary(output_path.read_text(encoding="utf-8"))
+            except ValueError:
+                errors.append(f"  {name}: '{output_path}' has no standalone '---' line to splice at")
+    return errors
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Render generated artefacts for one or all projects."
@@ -69,28 +110,36 @@ def main() -> None:
     templates = load_templates(TEMPLATES_YAML)
     selected = select_projects(projects, args.project)
 
-    # Phase 1: validate every target path exists BEFORE writing anything,
-    # so a single bad path can't leave some projects updated and others not.
+    # Phase 1: validate every target path exists, and every splice target is
+    # ready to splice against, BEFORE writing anything -- so a single bad
+    # path or missing boundary can't leave some projects updated and others
+    # not.
     errors = find_missing_paths(selected)
+    errors += find_bad_splice_targets(selected, templates)
     if errors:
         print(
-            "Error: the following project path(s) do not exist. Nothing was rendered:",
+            "Error: the following problem(s) were found. Nothing was rendered:",
             file=sys.stderr,
         )
         for err in errors:
             print(err, file=sys.stderr)
         sys.exit(1)
 
-    # Phase 2: render and write, now that every target path is known-good.
+    # Phase 2: render and write, now that every target is known-good.
     for name, entry in selected.items():
         tags = entry["tags"]
         out_dir = Path(entry["path"])
         for tmpl_entry in templates:
             template_path = Path(tmpl_entry["template"])
             template_str = template_path.read_text(encoding="utf-8")
-            rendered = render_project(tags, template_str)
+            rendered = render_project(name, tags, template_str)
             output_path = out_dir / tmpl_entry["output"]
-            output_path.write_text(rendered, encoding="utf-8")
+            mode = tmpl_entry.get("mode", "overwrite")
+            if mode == "splice":
+                body = split_at_boundary(output_path.read_text(encoding="utf-8"))
+                output_path.write_text(rendered + "\n---\n" + body, encoding="utf-8")
+            else:
+                output_path.write_text(rendered, encoding="utf-8")
             print(f"Rendered {output_path}")
 
 
