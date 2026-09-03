@@ -31,6 +31,14 @@ haddolib:
     - status:private
   path: ../haddolib
 
+load-runner:
+  tags:
+    - project:load-runner
+    - technology:python
+    - history:history
+    - status:private
+  path: ../load-runner
+
 ostara-walks:
   tags:
     - project:ostara-walks
@@ -38,6 +46,14 @@ ostara-walks:
     - history:history
     - status:private
   path: ../ostara-walks
+
+papple2:
+  tags:
+    - project:papple2
+    - technology:python
+    - history:history
+    - status:private
+  path: ../papple2
 
 pdf-annotations:
   tags:
