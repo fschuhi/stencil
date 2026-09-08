@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 from pathlib import Path
 import sys
 
@@ -40,8 +41,11 @@ BOUNDARY_MARKERS = (
 # Rough heuristic: ~4 characters per token for typical code/prose mixes
 CHARS_PER_TOKEN = 4
 
+# Bytes per KB, for the --detailed per-file size report
+BYTES_PER_KB = 1024
 
-def concat(list_file: Path, out):
+
+def concat(list_file: Path, out, detailed: bool = False):
     if not list_file.exists():
         out.write(f"Error: Cannot read file '{list_file}'\n")
         return 1
@@ -57,7 +61,8 @@ def concat(list_file: Path, out):
     errors = []      # (path, reason) tuples
     collisions = []  # (path, marker) tuples
     total_chars = 0
-    entries = []     # ("file", path, content) or ("error", path, reason)
+    # ("file", path, content, size_bytes) or ("error", path, reason)
+    entries = []
 
     # Phase 1: read everything into memory. Buffering is required because the
     # header declares counts that are only known after all files are read.
@@ -75,7 +80,8 @@ def concat(list_file: Path, out):
                 for marker in BOUNDARY_MARKERS:
                     if marker in content:
                         collisions.append((name, marker))
-                entries.append(("file", name, content))
+                size_bytes = p.stat().st_size
+                entries.append(("file", name, content, size_bytes))
                 included += 1
                 total_chars += len(content)
             except (OSError, UnicodeDecodeError) as e:
@@ -108,13 +114,29 @@ def concat(list_file: Path, out):
     # but simple tag wrapping is the current standard for prompts.
     out.write("<documents>\n")
     out.write(HEADER_TEMPLATE.format(count=included, tokens=est_tokens))
-    for kind, name, payload in entries:
-        if kind == "file":
-            out.write(FILE_TEMPLATE.format(path=name, content=payload))
+    for entry in entries:
+        if entry[0] == "file":
+            _, name, content, _size = entry
+            out.write(FILE_TEMPLATE.format(path=name, content=content))
         else:
-            out.write(ERROR_TEMPLATE.format(path=name, reason=payload))
+            _, name, reason = entry
+            out.write(ERROR_TEMPLATE.format(path=name, reason=reason))
     out.write(TRAILER_TEMPLATE.format(count=included))
     out.write("</documents>\n")
+
+    # Everything below goes to stderr, not stdout: stdout is reserved for the
+    # dump itself so `... > filesdump.txt` redirection stays clean. This is
+    # also why --detailed reports here rather than inline in the dump -- the
+    # dump's content should only ever be what the manifest asked for.
+    if detailed:
+        sys.stderr.write(f"concat_files: per-file breakdown ({included} file(s)):\n")
+        for entry in entries:
+            if entry[0] != "file":
+                continue
+            _, name, content, size_bytes = entry
+            tokens = len(content) // CHARS_PER_TOKEN
+            kb = size_bytes / BYTES_PER_KB
+            sys.stderr.write(f"  {name}: ~{tokens:,} tokens, {kb:,.1f} KB\n")
 
     # Summary to stderr (keeps stdout clean for redirection)
     sys.stderr.write(
@@ -129,15 +151,19 @@ def concat(list_file: Path, out):
 
 
 def main(argv=None):
-    if argv is None:
-        argv = sys.argv[1:]
+    parser = argparse.ArgumentParser(
+        prog="concat_files.py",
+        description="Concatenate the files listed in a manifest into an XML-wrapped filesdump.",
+    )
+    parser.add_argument("filelist", type=Path, help="Path to the manifest file (e.g. manifest.lst)")
+    parser.add_argument(
+        "-d", "--detailed",
+        action="store_true",
+        help="Report each included file's name, token estimate, and size in KB on stderr.",
+    )
+    args = parser.parse_args(argv)
 
-    if len(argv) != 1 or argv[0] in {"-h", "--help"}:
-        sys.stderr.write("Usage: python tools/concat_files.py <filelist>\n")
-        return 2
-
-    list_file = Path(argv[0])
-    return concat(list_file, sys.stdout)
+    return concat(args.filelist, sys.stdout, detailed=args.detailed)
 
 
 if __name__ == "__main__":

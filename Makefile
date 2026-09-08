@@ -9,7 +9,7 @@ RUN_WITH_PATH = $(ACTIVATE) && PYTHONPATH=.
 SETUP_STAMP = $(VENV_DIR)/.setup_stamp
 
 # --- Phony targets ---
-.PHONY: all setup test test-verbose render clean showtree gentree filesdump help
+.PHONY: all setup test test-verbose render clean showtree gentree filesdump filesdump-detailed help
 
 # Default target runs 'setup'
 all: setup
@@ -44,6 +44,16 @@ render: $(SETUP_STAMP) ## Render all projects' artefacts (or one: make render PR
 filesdump: $(SETUP_STAMP) gentree ## Create context dump for LLMs (requires manifest.lst)
 	@if [ -f manifest.lst ]; then \
 		$(RUN_WITH_PATH) python tools/concat_files.py manifest.lst > tmp/filesdump.txt; \
+		echo "Generated tmp/filesdump.txt"; \
+	else \
+		echo "Error: manifest.lst not found"; \
+	fi
+
+# Same as 'filesdump', but also reports each included file's name, token
+# estimate, and size in KB on stderr (stdout stays reserved for the dump).
+filesdump-detailed: $(SETUP_STAMP) gentree ## Create context dump for LLMs with per-file size details (requires manifest.lst)
+	@if [ -f manifest.lst ]; then \
+		$(RUN_WITH_PATH) python tools/concat_files.py --detailed manifest.lst > tmp/filesdump.txt; \
 		echo "Generated tmp/filesdump.txt"; \
 	else \
 		echo "Error: manifest.lst not found"; \
