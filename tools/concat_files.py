@@ -45,7 +45,7 @@ CHARS_PER_TOKEN = 4
 BYTES_PER_KB = 1024
 
 
-def concat(list_file: Path, out, detailed: bool = False):
+def concat(list_file: Path, out, detailed: bool = False, sort: bool = False):
     if not list_file.exists():
         out.write(f"Error: Cannot read file '{list_file}'\n")
         return 1
@@ -129,11 +129,13 @@ def concat(list_file: Path, out, detailed: bool = False):
     # also why --detailed reports here rather than inline in the dump -- the
     # dump's content should only ever be what the manifest asked for.
     if detailed:
-        sys.stderr.write(f"concat_files: per-file breakdown ({included} file(s)):\n")
-        for entry in entries:
-            if entry[0] != "file":
-                continue
-            _, name, content, size_bytes = entry
+        file_entries = [e for e in entries if e[0] == "file"]
+        if sort:
+            # Descending by on-disk size; ties broken by name for determinism.
+            file_entries.sort(key=lambda e: (-e[3], e[1]))
+        label = " (sorted by size, descending)" if sort else ""
+        sys.stderr.write(f"concat_files: per-file breakdown{label} ({included} file(s)):\n")
+        for _, name, content, size_bytes in file_entries:
             tokens = len(content) // CHARS_PER_TOKEN
             kb = size_bytes / BYTES_PER_KB
             sys.stderr.write(f"  {name}: ~{tokens:,} tokens, {kb:,.1f} KB\n")
@@ -161,9 +163,17 @@ def main(argv=None):
         action="store_true",
         help="Report each included file's name, token estimate, and size in KB on stderr.",
     )
+    parser.add_argument(
+        "-s", "--sort",
+        action="store_true",
+        help="With --detailed, sort the per-file breakdown by size, descending. No effect without --detailed.",
+    )
     args = parser.parse_args(argv)
 
-    return concat(args.filelist, sys.stdout, detailed=args.detailed)
+    if args.sort and not args.detailed:
+        parser.error("--sort has no effect without --detailed")
+
+    return concat(args.filelist, sys.stdout, detailed=args.detailed, sort=args.sort)
 
 
 if __name__ == "__main__":
