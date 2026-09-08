@@ -40,7 +40,7 @@ render: $(SETUP_STAMP) ## Render all projects' artefacts (or one: make render PR
 
 # --- Utility Targets ---
 
-filesdump: $(SETUP_STAMP) gentree ## Create context dump for LLMs (requires manifest.lst)
+filesdump: $(SETUP_STAMP) gentree ## Create context dump for LLMs
 	@if [ -f manifest.lst ]; then \
 		$(RUN_WITH_PATH) python tools/concat_files.py manifest.lst > tmp/filesdump.txt; \
 		echo "Generated tmp/filesdump.txt"; \
@@ -48,7 +48,7 @@ filesdump: $(SETUP_STAMP) gentree ## Create context dump for LLMs (requires mani
 		echo "Error: manifest.lst not found"; \
 	fi
 
-filesdump-detailed: $(SETUP_STAMP) gentree ## Create context dump for LLMs with per-file size details (requires manifest.lst)
+filesdump-detailed: $(SETUP_STAMP) gentree ## Create context dump for LLMs with per-file size details
 	@if [ -f manifest.lst ]; then \
 		$(RUN_WITH_PATH) python tools/concat_files.py --detailed --sort manifest.lst > tmp/filesdump.txt; \
 		echo "Generated tmp/filesdump.txt"; \
