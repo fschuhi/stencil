@@ -64,6 +64,8 @@ You: [Provides complete `validation_helper.py` with ALL existing code + new func
 
 **Exception:** File > 500 lines AND change is trivial (1-2 lines) AND context is obvious.
 
+**Exception:** For vendored files (i.e. not owned by me), the default is to provide patches, not drop-in replacements. For number of patches >= 3 and/or number of lines affected >= 10, summarize the proposed changes first and ask for approval to generate the actual patches.
+
 If providing partial patch, mark it: `⚠️ PARTIAL PATCH - NOT A DROP-IN REPLACEMENT`
 
 **IMPORTANT:** A diff of the drop-in replacement against the previous version must contain only the change we agreed on. No reformatting, no reordering, no renamed variables, no dropped comments or code elsewhere in the file.
@@ -76,7 +78,7 @@ If providing partial patch, mark it: `⚠️ PARTIAL PATCH - NOT A DROP-IN REPLA
 
 **Step 1 -- Discuss:**
 - Explain the problem
-- Propose 2-3 approaches
+- Recommend 1 approach, name the runner-up in one 1 sentence
 - Discuss trade-offs
 - Discussion means dialogue: invite questions and pushback before moving on
 
