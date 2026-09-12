@@ -82,7 +82,7 @@ See `CRITICAL_RULES.md` Rule 2: Always generate drop-in replacements.
 **PROTOCOL TRIGGER:** This protocol applies whenever the file content you are about to output contains one or more triple-backtick sequences anywhere within it, regardless of file type. This is common for `.md` files (which might contain fenced code examples) but can also occur in `.py`, `.json`, or any other file with embedded fenced content (e.g., a docstring or string literal containing a Markdown example).
 
 **Step 1 -- Determine your output mode:**
-- If you are able to generate a file as a separate artefact/canvas/document object outside the main chat dialog (distinct from the conversational text area), do so normally. Nothing further in this section applies to you.
+- If you are able to generate a file as a separate artefact/canvas/document object outside the main chat dialog (distinct from the conversational text area), do so normally, see also below. Nothing further in this section applies to you.
 - If you have no such artefact mechanism, and can only return file content as text within the chat dialog itself, proceed to Step 2.
 
 **Step 2 -- Four-backtick wrapping (chat-only models):**
@@ -92,6 +92,10 @@ See `CRITICAL_RULES.md` Rule 2: Always generate drop-in replacements.
 ````markdown
 <file content here, which may itself freely contain standard triple-backtick fences>
 ````
+
+### Files Go In Artefacts, Not The Dialogue
+
+Whenever the interface offers a separate object outside the chat text (artefact, canvas, document) for file output, use it -- every time, regardless of file size or whether it contains nested code fences. Fall back to inline chat text (four-backtick wrapping if needed) only when no such mechanism exists this session.
 
 ### Line Breaks in Prose Documents
 

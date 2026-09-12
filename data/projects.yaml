@@ -3,16 +3,24 @@ stencil:
     - project:stencil
     - technology:python
     - history:history
-    - status:private
+    - status:public
     # stencil does not only manage the standard files but has them as rendered instance
   path: .
+
+a2-hires-lab:
+  tags:
+    - project:anima
+    - technology:python
+    - history:history
+    - status:private
+  path: ../a2-hires-lab
 
 anima:
   tags:
     - project:anima
     - technology:swift
     - history:history
-    - status:private
+    - status:public
   path: ../anima
 
 clip-tools:
@@ -20,7 +28,7 @@ clip-tools:
     - project:clip-tools
     - technology:python
     - history:history
-    - status:private
+    - status:public
   path: ../clip-tools
 
 haddolib:
@@ -52,7 +60,7 @@ papple2:
     - project:papple2
     - technology:python
     - history:history
-    - status:private
+    - status:public
   path: ../papple2
 
 pdf-annotations:
@@ -60,7 +68,7 @@ pdf-annotations:
     - project:pdf-annotations
     - technology:python
     - history:history
-    - status:private
+    - status:public
   path: ../pdf-annotations
 
 scurry:
@@ -69,7 +77,7 @@ scurry:
     - technology:applescript
     - history:history
     # - alternative: history:changelog
-    - status:private
+    - status:public
   path: ../scurry
 
 unitum:

@@ -12,13 +12,6 @@ tmp/
 ~$*
 bak/
 
-# We store the raw scanning protocols
-data/input/
-data/output/
-data/photos*/
-data/covers/
-data/import/
-
 # macOS
 .DS_Store
 
@@ -29,7 +22,3 @@ data/import/
 .env
 *.toml
 !pyproject.toml
-
-# Excel workbench
-racks*.xlsm
-bridge*.xlsm
