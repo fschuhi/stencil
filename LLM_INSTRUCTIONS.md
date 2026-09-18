@@ -109,6 +109,11 @@ Whenever the interface offers a separate object outside the chat text (artefact,
 - Verbatim quotes from existing files keep their original characters.
 - Do not sweep an existing file's typography while editing it. Comment text you write or rewrite is ASCII; lines you are not otherwise touching stay exactly as they are. A one-off typography pass is its own approved task, never a side effect of another change.
 
+### Project Artefacts: Strictly No Inline Citations
+
+- Never emit synthetic inline source markers or search citations (such as ``, `[source: ...]`, or numeric brackets `[1]`, `[2]`) in any generated file, patch, code snippet, docstring, commit message, or markdown artefact.
+- Project files are version-controlled engineering documents; inline model attribution tags corrupt the source and must be completely omitted.
+
 ### Test Counts: "All Green", Never a Number
 
 - In prose you generate for living documents (`README.md`, `GOALS.md`, `TODO.md`, `HISTORY.md`, and code comments or docstrings): report the suite as "all green" or "green after every slice". Never a specific count, and never a delta like "94 -> 91".

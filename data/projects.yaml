@@ -71,6 +71,14 @@ pdf-annotations:
     - status:public
   path: ../pdf-annotations
 
+probotron:
+  tags:
+    - project:probotron
+    - technology:python
+    - history:history
+    - status:public
+  path: ../probotron
+
 scurry:
   tags:
     - project:scurry
