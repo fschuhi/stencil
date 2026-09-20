@@ -9,7 +9,7 @@ stencil:
 
 a2-hires-lab:
   tags:
-    - project:anima
+    - project:a2-hires-lab
     - technology:python
     - history:history
     - status:private
