@@ -15,6 +15,14 @@ a2-hires-lab:
     - status:private
   path: ../a2-hires-lab
 
+a3-lode-runner:
+  tags:
+    - project:a2-lode-runner
+    - technology:python
+    - history:history
+    - status:private
+  path: ../a2-lode-runner
+
 anima:
   tags:
     - project:anima
@@ -38,14 +46,6 @@ haddolib:
     - history:history
     - status:private
   path: ../haddolib
-
-load-runner:
-  tags:
-    - project:load-runner
-    - technology:python
-    - history:history
-    - status:private
-  path: ../load-runner
 
 ostara-walks:
   tags:
