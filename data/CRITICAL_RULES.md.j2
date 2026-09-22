@@ -44,7 +44,7 @@ You: [creates file]
 
 ---
 
-Rule 2: ALWAYS GENERATE DROP-IN REPLACEMENTS (or verified patches for `make patch`)
+## Rule 2: ALWAYS GENERATE DROP-IN REPLACEMENTS (or verified patches for `make patch`)
 
 **Provide complete files unless explicitly told otherwise.**
 
