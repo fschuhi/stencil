@@ -44,7 +44,7 @@ You: [creates file]
 
 ---
 
-## Rule 2: ALWAYS GENERATE DROP-IN REPLACEMENTS
+Rule 2: ALWAYS GENERATE DROP-IN REPLACEMENTS (or verified patches for `make patch`)
 
 **Provide complete files unless explicitly told otherwise.**
 
@@ -66,9 +66,16 @@ You: [Provides complete `validation_helper.py` with ALL existing code + new func
 
 **Exception:** For vendored files (i.e. not owned by me), the default is to provide patches, not drop-in replacements. For number of patches >= 3 and/or number of lines affected >= 10, summarize the proposed changes first and ask for approval to generate the actual patches.
 
-If providing partial patch, mark it: `⚠️ PARTIAL PATCH - NOT A DROP-IN REPLACEMENT`
+**Patches via `make patch`:** If the project's `Makefile` has a `patch` target, changes to existing files I own are delivered as one patch file for `make patch` instead of drop-in replacements -- but only if you have the exact current version of each file (from the `filesdump.txt` or the repo) and have checked the patch with `git apply --check` against it. Name the base commit when you deliver the patch. If you cannot check it, fall back to drop-in replacements.
+
+- New files are always delivered as complete files, never inside a patch.
+- `CRITICAL_RULES.md`, `LLM_INSTRUCTIONS.md` and `FIRST_PROMPT.md` are managed in `stencil` and never go through `make patch`. Changes to them are partial patches: say what to add, remove or update, and where.
+- Details (file name, line endings) are in `LLM_INSTRUCTIONS.md`, "Patches for `make patch`".
+
+If providing a partial patch (anything that is neither a complete file nor a checked `make patch` file), mark it: `⚠️ PARTIAL PATCH - NOT A DROP-IN REPLACEMENT`
 
 **IMPORTANT:** A diff of the drop-in replacement against the previous version must contain only the change we agreed on. No reformatting, no reordering, no renamed variables, no dropped comments or code elsewhere in the file.
+
 
 ---
 

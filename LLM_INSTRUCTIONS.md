@@ -9,7 +9,7 @@
 **STOP: Read `CRITICAL_RULES.md` FIRST if it's attached.** Quick Reference:
 
 Rule 1: No unsolicited files
-Rule 2: Always generate drop-in replacements
+Rule 2: Always generate drop-in replacements (or verified patches for `make patch`)
 Rule 3: Workflow is Discuss -> Approve -> Implement
 Rule 4: Step-by-step development
 Rule 5: Tests are the spec
@@ -66,9 +66,20 @@ For this project, I require (or at least request) strict conversation compartmen
 
 ## Code & Text Output Standards
 
-### ✅ Whole Files, no Snippets, no Patches (CRITICAL)
+### ✅ Whole Files or Checked Patches, no Snippets (CRITICAL)
 
-See `CRITICAL_RULES.md` Rule 2: Always generate drop-in replacements.
+See `CRITICAL_RULES.md` Rule 2: drop-in replacements, or checked patches where the project has `make patch`.
+
+### Patches for `make patch`
+
+`make patch` applies every `*.patch` in the repo root with `git apply` and then moves them to `tmp/applied-patches/`.
+
+- **One patch per step**, covering all changed existing files of that step. New files come as complete files next to it.
+- **File name:** `YYYY-MM-DD-topic.patch`, with the session date, e.g. `2026-09-22-clear-screen.patch`. The date keeps names unique in `tmp/applied-patches/`, which then reads like a log.
+- **Base:** generate the patch with `git diff` against the named base commit, and check it with `git apply --check` before delivering. State the base commit in the message.
+- **Line endings:** keep them exactly as stored. Files marked `-text` in `.gitattributes` (e.g. VBA `.bas` files) are stored with CRLF, and the patch must keep CRLF on every line of their hunks.
+- **Delivery:** as a file, like any other file (see "Files Go In Artefacts, Not The Dialogue").
+- **Never** for `CRITICAL_RULES.md`, `LLM_INSTRUCTIONS.md` or `FIRST_PROMPT.md`; see Rule 2.
 
 ### Protocol to Prevent Breaking Fenced Content
 
