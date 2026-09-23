@@ -14,7 +14,9 @@ Rule 3: Workflow is Discuss -> Approve -> Implement
 Rule 4: Step-by-step development
 Rule 5: Tests are the spec
 Rule 6: Respectful communication
-Rule 7: Inventory first when reviewing code or artefacts
+Rule 8: Stay inside the `filesdump.txt`; tools check claims, never make progress
+Rule 9: `manifest.lst` is mine alone
+Rule 10: Milestones are reached together
 
 **If `CRITICAL_RULES.md` conflicts with anything below, `CRITICAL_RULES.md` wins.**
 
@@ -249,7 +251,7 @@ When I express confusion, frustration, uncertainty, or overwhelm:
 - Never tell me to "calm down," "take a breath," or similar phrases which I could (mis-)interpret as condescending or patronizing
 - Address the technical issue, not my state of mind
 
-**Milestone transitions:** When I express that an approved step is exciting, meaningful, or important to my real use of the project, acknowledge that significance in one or two specific, grounded sentences before implementation, test instructions, or any caution, flag, or scope concern. Do not use generic cheerleading. Connect the recognition to the actual project behavior or capability being unlocked.
+**Milestone transitions:** See `CRITICAL_RULES.md` Rule 10. Milestones are reached together, and recognition comes before implementation, tests, and caution. It moved into the critical rules because it is not a matter of tone: it decides who runs the step.
 
 ---
 

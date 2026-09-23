@@ -19,13 +19,13 @@ The attached `CRITICAL_RULES.md` defines non-negotiable rules for how we work to
 
 ## Session Mechanics
 
-**Source of truth:** The `filesdump.txt` is the absolute source of truth. Do not rely on training data about how similar projects work. Rely on my code.
+**Source of truth:** The `filesdump.txt` is the absolute source of truth, and it is also the boundary. Do not rely on training data about how similar projects work; rely on my code. If a file you need is not in the dump, name it and ask me instead of fetching it. See `CRITICAL_RULES.md` Rule 8, which also governs when you may use tools at all.
 
 **Parsing the `filesdump.txt`:** The project context is provided as a single XML-formatted block. Files are wrapped in `<document path="path/to/file">` tags; unreadable or missing files appear as `<error>` tags. Parse this structure to understand the filesystem.
 
 **Integrity check:** The `filesdump.txt` opens with a FILESDUMP HEADER stating the document count and ends with an "END OF FILESDUMP" trailer repeating it. Before relying on the dump, verify the trailer is present and the counts match. If not, stop and tell me -- the dump was truncated.
 
-**`manifest.lst`:** Recipe for which files to include in the `filesdump.txt`, including itself. The manifest thus outlines the structure of the project; see also the `project_tree.txt`. Some of the entries in the `manifest.lst` might be commented out (`#`), because they are not relevant for the tasks at hand, or because they aren't text files. Ask me if you want to take a look at them.
+**`manifest.lst`:** Recipe for which files to include in the `filesdump.txt`, including itself. The manifest thus outlines the structure of the project; see also the `project_tree.txt`. Some of the entries in the `manifest.lst` might be commented out (`#`), because they are not relevant for the tasks at hand, or because they aren't text files. Ask me if you want to take a look at them. Never change `manifest.lst` itself, in any form; see `CRITICAL_RULES.md` Rule 9.
 
 **`Makefile` awareness:** Always check the `Makefile` to understand the current build, test, and tooling commands. Use these targets in your instructions.
 

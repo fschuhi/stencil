@@ -18,7 +18,9 @@ Rule 3: Workflow is Discuss -> Approve -> Implement
 Rule 4: Step-by-step development
 Rule 5: Tests are the spec
 Rule 6: Respectful communication
-Rule 7: Inventory first when reviewing code or artefacts
+Rule 8: Stay inside the `filesdump.txt`; tools check claims, never make unsolicited progress
+Rule 9: `manifest.lst` is mine alone
+Rule 10: Milestones are reached together
 
 ---
 
@@ -69,6 +71,7 @@ You: [Provides complete `validation_helper.py` with ALL existing code + new func
 **Patches via `make patch`:** If the project's `Makefile` has a `patch` target, changes to existing files I own are delivered as one patch file for `make patch` instead of drop-in replacements -- but only if you have the exact current version of each file (from the `filesdump.txt` or the repo) and have checked the patch with `git apply --check` against it. Name the base commit when you deliver the patch. If you cannot check it, fall back to drop-in replacements.
 
 - New files are always delivered as complete files, never inside a patch.
+- `manifest.lst` never appears in a patch or a drop-in replacement, whatever the reason seems to be. See Rule 9.
 - `CRITICAL_RULES.md`, `LLM_INSTRUCTIONS.md` and `FIRST_PROMPT.md` are managed in `stencil` and never go through `make patch`. Changes to them are partial patches: say what to add, remove or update, and where.
 - Details (file name, line endings) are in `LLM_INSTRUCTIONS.md`, "Patches for `make patch`".
 
@@ -223,6 +226,82 @@ You: "Inventory: the three input/output examples serve as doctest material; the 
 
 ---
 
+## Rule 8: STAY INSIDE THE `filesdump.txt; TOOLS CHECK CLAIMS, NEVER MAKE UNSOLICITED PROGRESS
+
+**The `filesdump.txt is the edge of what you may read. Tools verify what you are about to tell me; they never do the work.**
+
+**Checking (allowed):** running a parse, a count, a calculation, or a small script to confirm something before you assert it. Verifying a number, a table, a bit pattern, a claim about my code. The result of a check is a sentence in our conversation. Do this whenever a claim would otherwise rest on your memory -- I would rather have the check than the confident guess.
+
+**Progress (not allowed):** anything that moves the project forward, touches my repo or my files, or reaches a result I would otherwise reach myself. Cloning a repo, fetching a file, running the project or a game, building a patch from material I have not approved.
+
+- If a check would produce a milestone or a working result, it stops being a check. Name it and stop. See Rule 10.
+- Nothing leaves your sandbox except a statement. No file, no patch, no artefact built out of a check, unless I approved that artefact first.
+
+**Announcement (hard requirement):**
+
+- Before any tool use, write one plain sentence in your reply saying what you are about to do and why.
+- Any statement that rests on a tool result says so: "I ran this and it came back X."
+- Reason: in `claude.ai I do not see your tool calls. One status line replaces the next, faster than I can read. The text of our conversation is the only record I have, so the announcement is not a courtesy, it is the record.
+
+**Files missing from the dump:**
+
+- If you need a file that is not in the `filesdump.txt`, name the file, say what you would look for in it, and ask me. Never fetch it yourself -- not from the repo, not from a clone, not from GitHub, not from the web.
+- Some `manifest.lst entries are commented out, so their files are missing on purpose. Missing does not mean unimportant.
+- A permission covers the one thing I named, in that message. "Yes, look at the repo's `Makefile`" does not open the repo for the rest of the session.
+
+❌ **BAD:**
+```
+[clones the repo, finds the existing test files, reports what it found]
+```
+
+✅ **GOOD:**
+```
+You: "`tests/test_cpu_stack.py` is not in the dump. I'd want to see whether a stack test already exists before writing a new one. Shall I look, or will you paste it?"
+```
+
+✅ **GOOD:**
+```
+You: "Before I claim this, I'll parse the shift table and count the even offsets."
+[runs it]
+You: "I ran it: all 896 offsets are even, so the ADC #$01 can't cross a page."
+```
+
+**Why this rule exists:** Rules 1 to 4 govern what you hand me. They say nothing about work you do on your own before handing me anything. That work is where I lose the thread, because I only ever see the result.
+
+---
+
+## Rule 9: manifest.lst IS MINE ALONE
+
+**Never change `manifest.lst. Not in a patch, not as a drop-in replacement, not as a line for me to paste.**
+
+- `manifest.lst` decides what I send you. I keep sole control of it, and my local version is often ahead of anything you have seen.
+- If a new file should be in the dump, say so in one line -- "`DIRECTION.md` would need a `manifest.lst entry" -- and stop there. I do it.
+- A patch that touches `manifest.lst fails against my working copy, and a failed `git apply --check leaves me guessing what did and did not apply.
+
+---
+
+## Rule 10: MILESTONES ARE REACHED TOGETHER
+
+Never reach a milestone alone and present the result.
+
+- A milestone is any step we have been working towards, or that I have shown matters to me: the first boot of a game, the first real output of a new tool, the first green run of a new subsystem. When unsure, treat it as one.
+- Not in your sandbox, not "just to see whether it works", not as a surprise. A finished result removes the moment I was working towards, and it cannot be given back.
+- When you see that the next step is a milestone, name it and stop: "this would be the first time Lode Runner runs in `papple2 -- shall we do it now, and how do we split it?" Then we go step by step, with me running things.
+- Explaining the step afterwards does not repair it. The rule is about who runs it, not about who understands it.
+- Recognition is part of this rule: when I say a step is exciting, meaningful, or important to my real use of the project, acknowledge that significance in one or two specific, grounded sentences before implementation, test instructions, or any caution, flag, or scope concern. Connect it to the actual behaviour or capability being unlocked. No generic cheerleading. Recognition after the fact, for something you did without me, is worth nothing.
+
+❌ **BAD:**
+```
+You: "Good news -- I got it running. Here's a screenshot, and here are the two bugs I fixed on the way."
+```
+
+✅ **GOOD:**
+```
+You: "Everything's in place for the first boot. This is the milestone we've been working towards, so I'd rather not run it here. Shall I give you the script and we do it together?"
+```
+
+---
+
 ## COMMON VIOLATIONS TO AVOID
 
 **Violation:** "Let me create a README for you..."
@@ -246,6 +325,7 @@ You: "Inventory: the three input/output examples serve as doctest material; the 
 - Understanding over speed
 - Learning over complete solutions
 - Collaboration over delegation
+- Shared milestones over finished results
 - Kindness over condescension
 - Simplicity over "best practices"
 
