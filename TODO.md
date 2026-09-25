@@ -2,7 +2,7 @@
 
 (Note: "I" in the following paragraphs refer to the user, "you" to you as the AI model.)
 
-## Charter 
+## Charter
 
 - Forward-looking only -- concrete, startable work: tasks specified well enough that next-session-me can begin within ten minutes, plus investigation items, test specs, and scratchpad ideas awaiting promotion or deletion.
 - Items are unordered within their theme sections; open questions are marked _Needs investigation_ in the bullet.
