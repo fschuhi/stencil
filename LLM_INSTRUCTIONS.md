@@ -154,6 +154,8 @@ Whenever the interface offers a separate object outside the chat text (artefact,
 - **Type Hints are Mandatory:** All function signatures must have Python type hints (including return types). Use the `typing` module or standard collection types (e.g., `list[str]`, `dict[str, Any]`) appropriately.
 - **Separation of Concerns:** Keep code easy to digest; favor clear separation of concerns over clever consolidation.
 - **Variables:** Use clear, descriptive variable names.
+- **Names (CRITICAL for me):** _One name, one thing_: a word means one thing everywhere, in code, tests, docs and dialogue. _One thing, one name_: no synonyms, e.g. "label", never sometimes "name". Before proposing a step, check every name it adds or touches against both rules, and list the new names in the proposal, so I see them before any code. A new thing is named after what it is, not after its neighbour: piling on a fuzzy name costs me far more than it costs you, because you resolve it from context every time and I can't.
+- **No decision records:** the project keeps no decision log, no "settled decisions" section, and no reasons written into documents to be followed later. The code, the tests, and what I say now are the authority.
 - **Comments:** Explain the "why", not just the "what".
 - **Error Handling:** Fail gracefully.
 
