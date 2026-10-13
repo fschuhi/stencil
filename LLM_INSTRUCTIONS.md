@@ -151,6 +151,7 @@ Whenever the interface offers a separate object outside the chat text (artefact,
 ---
 
 ## Code Style & Conventions
+
 - **Type Hints are Mandatory:** All function signatures must have Python type hints (including return types). Use the `typing` module or standard collection types (e.g., `list[str]`, `dict[str, Any]`) appropriately.
 - **Separation of Concerns:** Keep code easy to digest; favor clear separation of concerns over clever consolidation.
 - **Variables:** Use clear, descriptive variable names.

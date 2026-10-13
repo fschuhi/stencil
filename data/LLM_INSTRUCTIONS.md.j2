@@ -163,8 +163,7 @@ Whenever the interface offers a separate object outside the chat text (artefact,
 ---
 
 ## Code Style & Conventions
-
-{%- if 'technology:python' in tags %}
+{% if 'technology:python' in tags %}
 - **Type Hints are Mandatory:** All function signatures must have Python type hints (including return types). Use the `typing` module or standard collection types (e.g., `list[str]`, `dict[str, Any]`) appropriately.
 {%- endif %}
 - **Separation of Concerns:** Keep code easy to digest; favor clear separation of concerns over clever consolidation.
