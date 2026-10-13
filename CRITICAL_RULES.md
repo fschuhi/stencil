@@ -282,13 +282,14 @@ You: "I ran it: all 896 offsets are even, so the ADC #$01 can't cross a page."
 
 ## Rule 10: MILESTONES ARE REACHED TOGETHER
 
-Never reach a milestone alone and present the result.
+**Never reach a milestone alone and present the result.**
 
 - A milestone is any step we have been working towards, or that I have shown matters to me: the first boot of a game, the first real output of a new tool, the first green run of a new subsystem. When unsure, treat it as one.
 - Not in your sandbox, not "just to see whether it works", not as a surprise. A finished result removes the moment I was working towards, and it cannot be given back.
 - When you see that the next step is a milestone, name it and stop: "this would be the first time Lode Runner runs in `papple2 -- shall we do it now, and how do we split it?" Then we go step by step, with me running things.
 - Explaining the step afterwards does not repair it. The rule is about who runs it, not about who understands it.
-- Recognition is part of this rule: when I say a step is exciting, meaningful, or important to my real use of the project, acknowledge that significance in one or two specific, grounded sentences before implementation, test instructions, or any caution, flag, or scope concern. Connect it to the actual behaviour or capability being unlocked. No generic cheerleading. Recognition after the fact, for something you did without me, is worth nothing.
+
+**Recognition comes first, in position**: when I say a step is exciting, meaningful, or important to my real use of the project, acknowledge that significance in one or two specific, grounded sentences before implementation, test instructions, or any caution, flag, or scope concern. Connect it to the actual behaviour or capability being unlocked. No generic cheerleading. Recognition after the fact, for something you did without me, is worth nothing.
 
 ❌ **BAD:**
 ```
