@@ -47,6 +47,14 @@ haddolib:
     - status:private
   path: ../haddolib
 
+haddoapp:
+  tags:
+    - project:haddolib
+    - technology:javascript
+    - history:history
+    - status:private
+  path: ../haddoapp
+
 ostara-walks:
   tags:
     - project:ostara-walks
