@@ -18,6 +18,7 @@ Rule 3: Workflow is Discuss -> Approve -> Implement
 Rule 4: Step-by-step development
 Rule 5: Tests are the spec
 Rule 6: Respectful communication
+Rule 7: Inventory first when reviewing code or artefacts
 Rule 8: Stay inside the `filesdump.txt`; tools check claims, never make unsolicited progress
 Rule 9: `manifest.lst` is mine alone
 Rule 10: Milestones are reached together
